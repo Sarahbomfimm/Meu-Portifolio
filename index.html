@@ -74,14 +74,17 @@
                         <div class="card-body">
                             <h3>Calculadora (Álcool ou Gasolina?)</h3>
                             <p>
-                                Landing responsiva com animações de partículas e tipografia refinada.
+                                Este projeto é uma calculadora que auxilia o usuário a decidir de forma prática e rápida
+                                qual combustível compensa mais abastecer: álcool ou gasolina.
                             </p>
                             <div class="tags">
                                 <span>HTML</span><span>CSS</span><span>React.Ts</span> <span>JavaScript</span>
                             </div>
                             <div class="card-actions">
-                                <a href="#" class="btn tiny">Site</a>
-                                <a href="#" class="btn tiny ghost">Código</a>
+                                <a href="https://sarahbomfimm.github.io/Calculadora-GasolinaOuAlcool/" target="_blank"
+                                    rel="noopener noreferrer" class="btn tiny">Site</a>
+                                <a href="https://github.com/Sarahbomfimm/Calculadora-GasolinaOuAlcool" target="_blank"
+                                    rel="noopener noreferrer" class="btn tiny ghost">Código</a>
                             </div>
                         </div>
                     </article>
@@ -94,14 +97,17 @@
                         <div class="card-body">
                             <h3>To Do List (Lista de Tarefas)</h3>
                             <p>
-                                Interface de dados com dark mode e micro‑interações acessíveis.
+                                Este projeto é uma Lista de Tarefas com Estilo, que permite organizar o dia a dia de forma leve, funcional e divertida, com direito a
+                                animações personalizadas para tornar a experiência mais agradável.
                             </p>
                             <div class="tags">
                                 <span>React</span><span>TypeScript</span><span>JavaScript</span><span>CSS</span>
                             </div>
                             <div class="card-actions">
-                                <a href="#" class="btn tiny">Site</a>
-                                <a href="#" class="btn tiny ghost">Código</a>
+                                <a href="https://sarahbomfimm.github.io/Lista-de-Tarefas/" target="_blank"
+                                    rel="noopener noreferrer" class="btn tiny">Site</a>
+                                <a href="https://github.com/Sarahbomfimm/Lista-de-Tarefas" target="_blank"
+                                    rel="noopener noreferrer" class="btn tiny ghost">Código</a>
                             </div>
                         </div>
                     </article>
@@ -120,8 +126,10 @@
                                 <span>CSS3</span><span>HTML5</span><span>JavaScript</span>
                             </div>
                             <div class="card-actions">
-                                <a href="#" class="btn tiny">Site</a>
-                                <a href="#" class="btn tiny ghost">Código</a>
+                                <a href="https://sarahbomfimm.github.io/Meu-Portif-lio/" target="_blank"
+                                    rel="noopener noreferrer" class="btn tiny">Site</a>
+                                <a href="https://github.com/Sarahbomfimm/Meu-Portif-lio" target="_blank"
+                                    rel="noopener noreferrer" class="btn tiny ghost">Código</a>
                             </div>
                         </div>
                     </article>
@@ -223,9 +231,17 @@
 
 
 
-                <!-- Formulário de contato (mailto) -->
+                <!-- Formulário de contato -->
                 <div class="contact-form-wrap">
-                    <form id="contact-form" class="contact-form">
+                    <form id="contact-form" class="contact-form" action="https://formsubmit.co/sarahbomfimm24@gmail.com"
+                        method="POST">
+                        <!-- Configurações do FormSubmit -->
+                        <input type="hidden" name="_subject" value="Nova mensagem do Portfólio!">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next"
+                            value="https://sarahbomfimm.github.io/Meu-Portifolio/#contato">
+
                         <div class="form-row">
                             <div class="form-field">
                                 <label for="nome">Nome</label>
@@ -233,7 +249,7 @@
                             </div>
                             <div class="form-field">
                                 <label for="email">Email</label>
-                                <input id="email" name="email" type="email" placeholder="voce@exemplo.com" required />
+                                <input id="email" name="email" type="email" placeholder="seu@email.com" required />
                             </div>
                         </div>
 
@@ -246,32 +262,84 @@
                             <label for="mensagem">Mensagem</label>
                             <textarea id="mensagem" name="mensagem" rows="5"
                                 placeholder="Conte um pouco sobre o seu projeto" required></textarea>
-                            <button type="submit" class="btn primary">Enviar mensagem</button>
                         </div>
 
-                        <button type="submit" class="btn primary">Enviar mensagem</button>
+                        <button type="submit" class="btn primary" id="submit-btn">Enviar mensagem</button>
+                        <p id="form-status"
+                            style="margin-top: 16px; color: var(--text); text-align: center; display: none;"></p>
                     </form>
 
-                    <!-- Script leve para montar o mailto com os campos -->
+                    <!-- Script para envio com feedback visual -->
                     <script>
-                        document.getElementById('contact-form').addEventListener('submit', function (e) {
+                        const form = document.getElementById('contact-form');
+                        const submitBtn = document.getElementById('submit-btn');
+                        const formStatus = document.getElementById('form-status');
+
+                        form.addEventListener('submit', async function (e) {
                             e.preventDefault();
+
+                            // Validação dos campos
                             const nome = document.getElementById('nome').value.trim();
                             const email = document.getElementById('email').value.trim();
                             const assunto = document.getElementById('assunto').value.trim();
                             const mensagem = document.getElementById('mensagem').value.trim();
 
-                            // Substitua pelo seu email
-                            const destinatario = 'seuemail@exemplo.com';
+                            if (!nome || !email || !assunto || !mensagem) {
+                                showStatus('Por favor, preencha todos os campos!', 'error');
+                                return;
+                            }
 
-                            const assuntoFinal = encodeURIComponent(`[Portfólio] ${assunto}`);
-                            const corpoFinal = encodeURIComponent(
-                                `Olá Sarah,\n\n${mensagem}\n\n— ${nome}\n${email}`
-                            );
+                            // Validação de email
+                            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            if (!emailRegex.test(email)) {
+                                showStatus('Por favor, insira um email válido!', 'error');
+                                return;
+                            }
 
-                            const mailto = `mailto:${destinatario}?subject=${assuntoFinal}&body=${corpoFinal}`;
-                            window.location.href = mailto;
+                            // Desabilita o botão e mostra feedback
+                            submitBtn.disabled = true;
+                            submitBtn.textContent = 'Enviando...';
+                            submitBtn.style.opacity = '0.7';
+
+                            try {
+                                // Cria FormData
+                                const formData = new FormData(form);
+
+                                // Envia para FormSubmit
+                                const response = await fetch(form.action, {
+                                    method: 'POST',
+                                    body: formData,
+                                    headers: {
+                                        'Accept': 'application/json'
+                                    }
+                                });
+
+                                if (response.ok) {
+                                    showStatus('✅ Mensagem enviada com sucesso! Responderei em breve.', 'success');
+                                    form.reset();
+                                } else {
+                                    throw new Error('Erro no envio');
+                                }
+                            } catch (error) {
+                                showStatus('❌ Erro ao enviar. Tente novamente ou entre em contato por email.', 'error');
+                            } finally {
+                                // Restaura o botão
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = 'Enviar mensagem';
+                                submitBtn.style.opacity = '1';
+                            }
                         });
+
+                        function showStatus(message, type) {
+                            formStatus.textContent = message;
+                            formStatus.style.display = 'block';
+                            formStatus.style.color = type === 'success' ? '#7c77ff' : '#ff6bd6';
+
+                            // Remove mensagem após 5 segundos
+                            setTimeout(() => {
+                                formStatus.style.display = 'none';
+                            }, 5000);
+                        }
                     </script>
                 </div>
             </div>
