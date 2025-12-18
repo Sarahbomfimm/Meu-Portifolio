@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sarah — Desenvolvedora Front‑end</title>
     <meta name="description" content="Portfólio de Sarah, desenvolvedora front-end web." />
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c77ff;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23ff6bd6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Ctext x='50' y='68' font-family='Montserrat, sans-serif' font-size='45' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ESB%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@300;400;600&display=swap"
@@ -19,6 +21,22 @@
     <div class="nebula" aria-hidden="true"></div>
     <div class="meteors" aria-hidden="true"></div>
     <div class="meteors-secondary" aria-hidden="true"></div>
+
+    <!-- Modal de Sucesso -->
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h3 class="modal-title">Mensagem Enviada!</h3>
+            <p class="modal-text">Obrigada pelo contato! Responderei em breve. 🚀</p>
+            <button class="modal-btn" onclick="closeSuccessModal()">Fechar</button>
+        </div>
+    </div>
 
     <header class="site-header">
         <div class="container">
@@ -97,7 +115,8 @@
                         <div class="card-body">
                             <h3>To Do List (Lista de Tarefas)</h3>
                             <p>
-                                Este projeto é uma Lista de Tarefas com Estilo, que permite organizar o dia a dia de forma leve, funcional e divertida, com direito a
+                                Este projeto é uma Lista de Tarefas com Estilo, que permite organizar o dia a dia de
+                                forma leve, funcional e divertida, com direito a
                                 animações personalizadas para tornar a experiência mais agradável.
                             </p>
                             <div class="tags">
@@ -129,6 +148,32 @@
                                 <a href="https://sarahbomfimm.github.io/Meu-Portif-lio/" target="_blank"
                                     rel="noopener noreferrer" class="btn tiny">Site</a>
                                 <a href="https://github.com/Sarahbomfimm/Meu-Portif-lio" target="_blank"
+                                    rel="noopener noreferrer" class="btn tiny ghost">Código</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="Captura de tela 2025-12-18 131407.png" 
+                                 alt="Dashboard de Controle de Qualidade Hoteleiro"
+                                 onerror="this.src='https://via.placeholder.com/400x250/667eea/ffffff?text=Dashboard+Hotel'" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Dashboard de Controle de Qualidade Hoteleiro</h3>
+                            <p>
+                                Sistema completo para gestão hoteleira com análise de dados em tempo real, 
+                                importação de planilhas Excel/CSV, visualização de KPIs, gráficos interativos 
+                                e exportação de relatórios personalizados.
+                            </p>
+                            <div class="tags">
+                                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Chart.js</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="https://sarahbomfimm.github.io/Dashboard-Hotel-Qualidade/" target="_blank"
+                                    rel="noopener noreferrer" class="btn tiny">Site</a>
+                                <a href="https://github.com/Sarahbomfimm/Dashboard-Hotel-Qualidade" target="_blank"
                                     rel="noopener noreferrer" class="btn tiny ghost">Código</a>
                             </div>
                         </div>
@@ -233,19 +278,16 @@
 
                 <!-- Formulário de contato -->
                 <div class="contact-form-wrap">
-                    <form id="contact-form" class="contact-form" action="https://formsubmit.co/sarahbomfimm24@gmail.com"
-                        method="POST">
-                        <!-- Configurações do FormSubmit -->
-                        <input type="hidden" name="_subject" value="Nova mensagem do Portfólio!">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next"
-                            value="https://sarahbomfimm.github.io/Meu-Portifolio/#contato">
+                    <form id="contact-form" class="contact-form">
+                        <!-- Configurações adicionais -->
+                        <input type="hidden" name="subject" value="Nova mensagem do Portfólio!">
+                        <input type="hidden" name="from_name" value="Portfólio Sarah">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                         <div class="form-row">
                             <div class="form-field">
                                 <label for="nome">Nome</label>
-                                <input id="nome" name="nome" type="text" placeholder="Seu nome" required />
+                                <input id="nome" name="name" type="text" placeholder="Seu nome" required />
                             </div>
                             <div class="form-field">
                                 <label for="email">Email</label>
@@ -260,7 +302,7 @@
 
                         <div class="form-field">
                             <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" rows="5"
+                            <textarea id="mensagem" name="message" rows="5"
                                 placeholder="Conte um pouco sobre o seu projeto" required></textarea>
                         </div>
 
@@ -268,79 +310,101 @@
                         <p id="form-status"
                             style="margin-top: 16px; color: var(--text); text-align: center; display: none;"></p>
                     </form>
-
-                    <!-- Script para envio com feedback visual -->
-                    <script>
-                        const form = document.getElementById('contact-form');
-                        const submitBtn = document.getElementById('submit-btn');
-                        const formStatus = document.getElementById('form-status');
-
-                        form.addEventListener('submit', async function (e) {
-                            e.preventDefault();
-
-                            // Validação dos campos
-                            const nome = document.getElementById('nome').value.trim();
-                            const email = document.getElementById('email').value.trim();
-                            const assunto = document.getElementById('assunto').value.trim();
-                            const mensagem = document.getElementById('mensagem').value.trim();
-
-                            if (!nome || !email || !assunto || !mensagem) {
-                                showStatus('Por favor, preencha todos os campos!', 'error');
-                                return;
-                            }
-
-                            // Validação de email
-                            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                            if (!emailRegex.test(email)) {
-                                showStatus('Por favor, insira um email válido!', 'error');
-                                return;
-                            }
-
-                            // Desabilita o botão e mostra feedback
-                            submitBtn.disabled = true;
-                            submitBtn.textContent = 'Enviando...';
-                            submitBtn.style.opacity = '0.7';
-
-                            try {
-                                // Cria FormData
-                                const formData = new FormData(form);
-
-                                // Envia para FormSubmit
-                                const response = await fetch(form.action, {
-                                    method: 'POST',
-                                    body: formData,
-                                    headers: {
-                                        'Accept': 'application/json'
-                                    }
-                                });
-
-                                if (response.ok) {
-                                    showStatus('✅ Mensagem enviada com sucesso! Responderei em breve.', 'success');
-                                    form.reset();
-                                } else {
-                                    throw new Error('Erro no envio');
-                                }
-                            } catch (error) {
-                                showStatus('❌ Erro ao enviar. Tente novamente ou entre em contato por email.', 'error');
-                            } finally {
-                                // Restaura o botão
-                                submitBtn.disabled = false;
-                                submitBtn.textContent = 'Enviar mensagem';
-                                submitBtn.style.opacity = '1';
-                            }
-                        });
-
-                        function showStatus(message, type) {
-                            formStatus.textContent = message;
-                            formStatus.style.display = 'block';
-                            formStatus.style.color = type === 'success' ? '#7c77ff' : '#ff6bd6';
-
-                            // Remove mensagem após 5 segundos
-                            setTimeout(() => {
-                                formStatus.style.display = 'none';
-                            }, 5000);
-                        }
-                    </script>
                 </div>
             </div>
         </section>
+
+    </main>
+
+    <!-- Script para envio com Web3Forms -->
+    <script>
+        (function () {
+            'use strict';
+
+            const form = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const formStatus = document.getElementById('form-status');
+
+            if (!form || !submitBtn || !formStatus) {
+                console.error('Elementos do formulário não encontrados');
+                return;
+            }
+
+            console.log('Formulário inicializado');
+
+            form.onsubmit = async function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                console.log('Formulário enviado');
+
+                const formData = new FormData(form);
+                formData.append("access_key", "530f674d-d5b5-4bee-92ec-8b44c9a52071");
+
+                const originalText = submitBtn.textContent;
+
+                submitBtn.textContent = "Enviando...";
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = "0.7";
+
+                try {
+                    console.log('Enviando para Web3Forms...');
+
+                    const response = await fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    const data = await response.json();
+                    console.log('Resposta:', data);
+
+                    if (response.ok && data.success) {
+                        form.reset();
+                        showSuccessModal();
+                    } else {
+                        formStatus.textContent = "❌ Erro: " + (data.message || 'Falha no envio');
+                        formStatus.style.display = "block";
+                        formStatus.style.color = "#ff6bd6";
+                    }
+
+                } catch (error) {
+                    console.error('Erro no envio:', error);
+                    formStatus.textContent = "❌ Algo deu errado. Por favor, tente novamente.";
+                    formStatus.style.display = "block";
+                    formStatus.style.color = "#ff6bd6";
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                }
+
+                return false;
+            };
+        })();
+
+        // Funções da Modal
+        function showSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            modal.classList.add('active');
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            modal.classList.remove('active');
+        }
+
+        // Fechar modal clicando fora
+        document.getElementById('success-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeSuccessModal();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
