@@ -1546,19 +1546,27 @@ body {
   border-top: 1px solid var(--stroke);
   padding: 32px 0;
   margin-top: 80px;
-  text-align: center;
   position: relative;
   z-index: 10;
+  width: 100%;
+}
+
+.site-footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .site-footer p {
   margin: 0;
-  color: var(--muted);
+  color: rgba(230, 230, 248, 0.75);
   font-size: 0.95rem;
   letter-spacing: 0.3px;
+  text-align: center;
+  width: 100%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .site-footer {
     padding: 24px 0;
     margin-top: 60px;
@@ -1566,5 +1574,18 @@ body {
 
   .site-footer p {
     font-size: 0.875rem;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 20px 0;
+    margin-top: 40px;
+  }
+
+  .site-footer p {
+    font-size: 0.813rem;
+    padding: 0 12px;
   }
 }
